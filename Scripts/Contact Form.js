@@ -71,3 +71,13 @@ function updateToLocalStorage(){
     console.log(record);
     localStorage.setItem("Record",JSON.stringify(record));
 }
+function resetForm(){
+    document.getElementById("ContactForm").reset();
+    resetErr('.text-error');
+    resetErr('.phone-error');
+    resetErr('.address-error');
+}
+
+function resetErr(type){
+    document.querySelector(type).textContent="";
+}
