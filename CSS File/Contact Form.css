@@ -166,3 +166,29 @@ error-output{
     font-style: bold;
     color: red;
 }
+@media only screen and (max-width: 900px){
+    .column{
+        flex-direction: row;
+    }
+    .submit-reset{
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .submitButton{
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+    .buttonParent{
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+    .row-content{
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    select {
+        width: 150px;
+    }
+}

@@ -1,23 +1,27 @@
 class Contacts{
+    get id() {return this._id;}
+    set id(id){
+        this._id=id;
+    }
 
     get name(){ return this._name;}
     set name(name){
         let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$')
         if(nameRegex.test(name)) this._name = name;
-        else throw "*Name is Invalid!";
+        else throw "Name is Invalid!";
     }
 
     get phone() {return this._phone;}
     set phone(phone){
         let phoneRegex=RegExp('^[0-9]{10}$');
         if (phoneRegex.test(phone)) this._phone = phone;
-        else throw '*Phone Number is Invalid';
+        else throw 'Phone Number is Invalid';
     }
 
     get address() {return this._address;}
     set address(address){
         if (checkAddressValid(address)) this._address = address;
-        else throw '*Address is Invalid';
+        else throw 'Address is Invalid';
     }
 
     get city() {return this._city;}
@@ -44,3 +48,5 @@ function checkAddressValid(address){
     }
     return true;
 }
+
+let contact=new Contacts();
