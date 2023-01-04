@@ -32,12 +32,21 @@
                 <input class="input" type="text" id="name" name="name" placeholder="Enter Name..." required>
             </div>
             <div class="column-content">
+                <error-output class="text-error" for="text"></error-output>
+            </div>
+            <div class="column-content">
                 <label class="label text" for="phone">Phone No</label>
                 <input class="input" type="text" id="phone" name="phone" placeholder="Enter Phone Number..." required>
             </div>
             <div class="column-content">
+                <error-output class="phone-error" for="text"></error-output>
+            </div>
+            <div class="column-content">
                 <label class="label text" for="address">Address </label>
                 <textarea class="input" rows="4" cols="50" id="address" name="address" placeholder="Enter Address..." required></textarea>
+            </div>
+            <div class="column-content">
+                <error-output class="address-error" for="text"></error-output>
             </div>
             <div class="column-content">
                 <div class="row-content">
@@ -92,5 +101,7 @@
             </div>
         </form>    
     </div>
+    <script src="../Scripts/Contact Form.js"></script>
+    <script src="../Scripts/Contacts.js"></script>
 </body>
 </html>

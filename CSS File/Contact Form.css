@@ -160,3 +160,9 @@ select{
     border: 1px solid #969696;
     border-radius: 5px;
 }
+error-output{
+    margin-left: 60%;
+    font-size: 15px;
+    font-style: bold;
+    color: red;
+}
