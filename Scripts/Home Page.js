@@ -45,9 +45,18 @@ function createInnerHTML(){
 }
 
 function remove(node){
-    console.log("Scheduled for deletion");
+    let contact = record.find(bookObj=>bookObj._id == node.id);
+    if(!contact){
+        console.log("No entry found!!");
+        return;
+    }
+    const index = record.map(bookObj=>bookObj._id)
+                        .indexOf(contact._id);
+    record.splice(index,1);
+    localStorage.setItem("Record",JSON.stringify(record));
+    createInnerHTML();
 }
-
 function update(node){
     console.log("Scheduled for edit");
 }
+
