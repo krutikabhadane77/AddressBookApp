@@ -1,3 +1,5 @@
+let isUpdate=false;
+let newContact=new Array();
 window.addEventListener('DOMContentLoaded',(event)=>{
     const name = document.querySelector('#name');
     const textError = document.querySelector('.text-error');
@@ -63,13 +65,27 @@ function save(){
 
 function updateToLocalStorage(){
     let record = JSON.parse(localStorage.getItem("Record"));
-    if(record!=undefined){
-        record.push(contact);
+    if(record){
+        let dataToUpdate = record.find(bookObj=>bookObj._id ==newContact._id);
+        
+        if(!dataToUpdate){
+            contact._id=getID();
+            record.push(contact);
+        } else {
+            console.log("rem");
+            const index = record.map(bookObj => bookObj._id)
+                                .indexOf(dataToUpdate._id);
+            contact._id=getID();
+            record.splice(index, 1, contact);
+        }
     }else{
+        contact._id=getID();
         record=[contact];
     }
+
     console.log(record);
     localStorage.setItem("Record",JSON.stringify(record));
+    window.location.replace(site_properties.home_page);
 }
 function resetForm(){
     document.getElementById("ContactForm").reset();
@@ -80,4 +96,33 @@ function resetForm(){
 
 function resetErr(type){
     document.querySelector(type).textContent="";
+}
+function getID(){
+    let contID = localStorage.getItem("ID");
+    contID = !contID?1:(parseInt(contID)+1).toString();
+    localStorage.setItem("ID",contID);
+    return contID;
+}
+
+function checkForUpdates(){
+    const contactJson = localStorage.getItem('editContact');
+    isUpdate = contactJson?true:false;
+    if(!isUpdate) return;
+    newContact = JSON.parse(contactJson);
+    console.log(newContact)
+    setForm();
+}
+
+function setForm(){
+    setValue('#name',newContact._name);
+    setValue('#phone',newContact._phone);
+    setValue('#address',newContact._address);
+    setValue('#city',newContact._city);
+    setValue('#state',newContact._state);
+    setValue('#zip',newContact._zip);
+}
+
+function setValue(property,value){
+    const element = document.querySelector(property);
+    element.value = value;
 }
