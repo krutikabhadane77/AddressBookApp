@@ -57,6 +57,13 @@ function remove(node){
     createInnerHTML();
 }
 function update(node){
-    console.log("Scheduled for edit");
+    let contact = record.find(bookObj=>bookObj._id == node.id);
+    if(!contact){
+        console.log("No entry found!!");
+        return;
+    }
+    localStorage.setItem('editContact', JSON.stringify(contact,'\t', 2));
+    window.location.replace(site_properties.contact_form);
+    checkForUpdate();
 }
 
